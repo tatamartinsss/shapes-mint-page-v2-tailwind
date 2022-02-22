@@ -16,7 +16,7 @@ export const Header = ({
     refreshCandyMachineState: any;
 }) => {
     return (
-        <div className="flex flex-row flex-nowrap ">
+        <div className="flex flex-row flex-nowrap end">
             {candyMachine && (
                 <>
                     <div className="flex flex-col justify-center text-center align-middle flex-nowrap basis-1/4">

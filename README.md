@@ -1,4 +1,4 @@
-# Candy Machine V2 - BOOTSTRAP - Template
+# Candy Machine V2 - TAILWIND - Template
 
 by [Halaprix](https://twitter.com/halaprix).<br/>Live preview [here](https://vol2.shapes.ltd/)<br/>
 1click deploy:<br/><br/>

@@ -171,14 +171,14 @@ const Home = (props: HomeProps) => {
 
     return (
         <>
-            <div className="relative px-6 pt-10 pb-8 bg-teal-900 border shadow-xl sm:mt-2 ring-1 ring-gray-900/5 sm:max-w-sm sm:mx-auto sm:rounded-lg sm:px-10 sm:py-5">
+            <div className="relative px-6 pt-10 pb-8 bg-teal-900 shadow-xl border-neutral-600 sm:mt-2 ring-1 ring-gray-900/5 sm:max-w-sm sm:mx-auto sm:rounded-lg sm:px-10 sm:py-5">
                 <img src={LOGO_LINK} alt="" width="100%" style={{ borderRadius: '5px' }} />
             </div>
-            <div className="relative px-6 pt-10 pb-8 bg-teal-900 border shadow-xl aspect-square ring-1 ring-gray-900/5 sm:max-w-sm sm:mx-auto sm:my-3 sm:rounded-lg sm:px-2 sm:py-2">
+            <div className="relative px-6 pt-10 pb-8 bg-teal-900 shadow-xl border-neutral-600 aspect-square ring-1 ring-gray-900/5 sm:max-w-sm sm:mx-auto sm:my-3 sm:rounded-lg sm:px-2 sm:py-2">
                 <img src={IMAGE_LINK} alt="" width="100%" style={{ borderRadius: '5px' }} />
             </div>
 
-            <div className="relative px-6 pt-10 pb-8 bg-teal-900 border shadow-xl ring-1 ring-gray-900/5 sm:max-w-sm sm:mx-auto sm:my-3 sm:rounded-lg sm:px-10 sm:py-5">
+            <div className="relative px-6 pt-10 pb-8 bg-teal-900 shadow-xl border-neutral-600 ring-1 ring-gray-900/5 sm:max-w-sm sm:mx-auto sm:my-3 sm:rounded-lg sm:px-10 sm:py-5">
                 {!wallet.connected ? (
                     <ConnectButton>Connect Wallet</ConnectButton>
                 ) : loading ? (

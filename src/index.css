@@ -2,20 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: radial-gradient(
-    circle,
-    rgba(52, 52, 47, 1) 0%,
-    rgba(19, 117, 101, 1) 50%,
-    rgba(62, 180, 148, 1) 100%
-  ) !important;
-  background-attachment: fixed;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+
 
 
 body::-webkit-scrollbar {

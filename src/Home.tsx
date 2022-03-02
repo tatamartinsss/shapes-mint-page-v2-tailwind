@@ -25,8 +25,8 @@ import { GatewayProvider } from '@civic/solana-gateway-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { usePoller } from './hooks/usePoller';
 
-const IMAGE_LINK = '/animation.gif';
-const LOGO_LINK = '/logo.png';
+const IMAGE_LINK = '/Skelly.jpg';
+const LOGO_LINK = '/DOTD-logo-1.png';
 
 const ConnectButton = styled(WalletMultiButton)`
     width: 100%;
@@ -38,7 +38,6 @@ const ConnectButton = styled(WalletMultiButton)`
     font-size: 16px;
     font-weight: bold;
 `;
-
 
 const MintContainer = styled.div``; // add your owns styles here
 
@@ -170,62 +169,63 @@ const Home = (props: HomeProps) => {
     }, [anchorWallet, props.candyMachineId, props.connection, refreshCandyMachineState]);
 
     return (
-        <>
-            <div className="relative px-6 pt-10 pb-8 bg-teal-900 shadow-xl border-neutral-600 sm:mt-2 ring-1 ring-gray-900/5 sm:max-w-sm sm:mx-auto sm:rounded-lg sm:px-10 sm:py-5">
-                <img src={LOGO_LINK} alt="" width="100%" style={{ borderRadius: '5px' }} />
-            </div>
-            <div className="relative px-6 pt-10 pb-8 bg-teal-900 shadow-xl border-neutral-600 aspect-square ring-1 ring-gray-900/5 sm:max-w-sm sm:mx-auto sm:my-3 sm:rounded-lg sm:px-2 sm:py-2">
-                <img src={IMAGE_LINK} alt="" width="100%" style={{ borderRadius: '5px' }} />
-            </div>
+        <div className="bg-ded bg-[length:200px] min-h-screen">
+            <div className="grid min-h-screen grid-cols-1 bg-black/95 place-content-center">
+                <div className="relative p-4 bg-[#212529] shadow-xl border-neutral-600 mt-0 ring-1  max-w-sm mx-auto rounded-lg my-3">
+                    <img src={LOGO_LINK} alt="" width="100%" style={{ borderRadius: '5px' }} />
+                </div>
+                <div className="relative p-2 bg-[#212529] shadow-xl border-neutral-600 aspect-square ring-1  max-w-sm mx-auto my-3 rounded-lg ">
+                    <img src={IMAGE_LINK} alt="" width="100%" style={{ borderRadius: '5px' }} />
+                </div>
 
-            <div className="relative px-6 pt-10 pb-8 bg-teal-900 shadow-xl border-neutral-600 ring-1 ring-gray-900/5 sm:max-w-sm sm:mx-auto sm:my-3 sm:rounded-lg sm:px-10 sm:py-5">
-                {!wallet.connected ? (
-                    <ConnectButton>Connect Wallet</ConnectButton>
-                ) : loading ? (
-                    <div className="flex items-center justify-center">
-                        <div
-                            className="inline-block w-8 h-8 text-gray-300 bg-current rounded-full opacity-0 spinner-grow"
-                            role="status"
-                        ></div>
-                    </div>
-                ) : (
-                    <>
-                        <Header candyMachine={candyMachine} refreshCandyMachineState={refreshCandyMachineState} />
-                        <MintContainer>
-                            {candyMachine?.state.isActive &&
-                            candyMachine?.state.gatekeeper &&
-                            wallet.publicKey &&
-                            wallet.signTransaction ? (
-                                <GatewayProvider
-                                    wallet={{
-                                        publicKey: wallet.publicKey || new PublicKey(CANDY_MACHINE_PROGRAM),
-                                        //@ts-ignore
-                                        signTransaction: wallet.signTransaction,
-                                    }}
-                                    gatekeeperNetwork={candyMachine?.state?.gatekeeper?.gatekeeperNetwork}
-                                    clusterUrl={rpcUrl}
-                                    options={{ autoShowModal: false }}
-                                >
+                <div className="mx-auto w-full md:px-2 pt-10 pb-8 bg-[#212529] shadow-xl border-neutral-600 ring-1  max-w-sm  my-3 rounded-lg ">
+                    {!wallet.connected ? (
+                        <ConnectButton>Connect Wallet</ConnectButton>
+                    ) : loading ? (
+                        <div className="flex items-center justify-center">
+                            <div
+                                className="inline-block w-8 h-8 text-gray-300 bg-current rounded-full opacity-0 spinner-grow"
+                                role="status"
+                            ></div>
+                        </div>
+                    ) : (
+                        <>
+                            <Header candyMachine={candyMachine} refreshCandyMachineState={refreshCandyMachineState} />
+                            <MintContainer>
+                                {candyMachine?.state.isActive &&
+                                candyMachine?.state.gatekeeper &&
+                                wallet.publicKey &&
+                                wallet.signTransaction ? (
+                                    <GatewayProvider
+                                        wallet={{
+                                            publicKey: wallet.publicKey || new PublicKey(CANDY_MACHINE_PROGRAM),
+                                            //@ts-ignore
+                                            signTransaction: wallet.signTransaction,
+                                        }}
+                                        gatekeeperNetwork={candyMachine?.state?.gatekeeper?.gatekeeperNetwork}
+                                        clusterUrl={rpcUrl}
+                                        options={{ autoShowModal: false }}
+                                    >
+                                        <MintButton
+                                            candyMachine={candyMachine}
+                                            isMinting={isUserMinting}
+                                            onMint={onMint}
+                                            userHasWhitelistToken={userHasWhitelistToken}
+                                        />
+                                    </GatewayProvider>
+                                ) : (
                                     <MintButton
                                         candyMachine={candyMachine}
                                         isMinting={isUserMinting}
                                         onMint={onMint}
                                         userHasWhitelistToken={userHasWhitelistToken}
                                     />
-                                </GatewayProvider>
-                            ) : (
-                                <MintButton
-                                    candyMachine={candyMachine}
-                                    isMinting={isUserMinting}
-                                    onMint={onMint}
-                                    userHasWhitelistToken={userHasWhitelistToken}
-                                />
-                            )}
-                        </MintContainer>
-                    </>
-                )}
+                                )}
+                            </MintContainer>
+                        </>
+                    )}
 
-                {/*         <Snackbar
+                    {/*         <Snackbar
           open={alertState.open}
           autoHideDuration={6000}
           onClose={() => setAlertState({ ...alertState, open: false })}
@@ -237,8 +237,9 @@ const Home = (props: HomeProps) => {
             {alertState.message}
           </Alert>
         </Snackbar> */}
+                </div>
             </div>
-        </>
+        </div>
     );
 };
 

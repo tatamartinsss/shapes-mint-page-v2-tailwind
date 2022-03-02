@@ -178,7 +178,7 @@ const Home = (props: HomeProps) => {
                     <img src={IMAGE_LINK} alt="" width="100%" style={{ borderRadius: '5px' }} />
                 </div>
 
-                <div className="mx-auto w-full md:px-2 pt-10 pb-8 bg-[#212529] shadow-xl border-neutral-600 ring-1  max-w-sm  my-3 rounded-lg ">
+                <div className="mx-auto w-full p-2  bg-[#212529] shadow-xl border-neutral-600 ring-1  max-w-sm  my-3 rounded-lg ">
                     {!wallet.connected ? (
                         <ConnectButton>Connect Wallet</ConnectButton>
                     ) : loading ? (

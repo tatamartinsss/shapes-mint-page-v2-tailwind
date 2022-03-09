@@ -7,12 +7,6 @@ import {
   TransactionInstruction,
 } from '@solana/web3.js';
 
-export interface AlertState {
-  open: boolean;
-  message: string;
-  severity: 'success' | 'info' | 'warning' | 'error' | undefined;
-}
-
 export const toDate = (value?: anchor.BN) => {
   if (!value) {
     return;

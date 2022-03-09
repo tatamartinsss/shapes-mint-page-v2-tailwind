@@ -6,24 +6,21 @@ import styled from 'styled-components';
 import { PublicKey } from '@solana/web3.js';
 import { useWallet } from '@solana/wallet-adapter-react';
 
-//import {Snackbar } from "@material-ui/core";
-
-//import Alert from "@material-ui/lab/Alert";
-
 import {
     awaitTransactionSignatureConfirmation,
     CandyMachineAccount,
     CANDY_MACHINE_PROGRAM,
     getCandyMachineState,
-    mintOneToken,
+    mintOneToken
 } from './utils/candy-machine';
-import { AlertState } from './utils/utils';
 import { checkWLToken } from './utils/checkWLToken';
 import { Header } from './components/Header';
 import { MintButton } from './components/MintButton';
 import { GatewayProvider } from '@civic/solana-gateway-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { usePoller } from './hooks/usePoller';
+
+import toast, { Toaster } from 'react-hot-toast';
 
 const IMAGE_LINK = '/Skelly.jpg';
 const LOGO_LINK = '/DOTD-logo-1.png';
@@ -53,11 +50,6 @@ const Home = (props: HomeProps) => {
     const [isUserMinting, setIsUserMinting] = useState(false);
     const [candyMachine, setCandyMachine] = useState<CandyMachineAccount>();
     const [userHasWhitelistToken, setUserHasWhitelistToken] = useState(false);
-    const [alertState, setAlertState] = useState<AlertState>({
-        open: false,
-        message: '',
-        severity: undefined,
-    });
     const [loading, setLoading] = useState(true);
     const rpcUrl = props.rpcHost;
     const wallet = useWallet();
@@ -122,17 +114,10 @@ const Home = (props: HomeProps) => {
                 }
 
                 if (status && !status.err) {
-                    setAlertState({
-                        open: true,
-                        message: 'Congratulations! Mint succeeded!',
-                        severity: 'success',
-                    });
+                    toast.success( 'Congratulations! Mint succeeded!');
                 } else {
-                    setAlertState({
-                        open: true,
-                        message: 'Mint failed! Please try again!',
-                        severity: 'error',
-                    });
+                    toast.error(
+                       'Mint failed! Please try again!');
                 }
             }
         } catch (error: any) {
@@ -142,6 +127,7 @@ const Home = (props: HomeProps) => {
                     message = 'Transaction Timeout! Please try again.';
                 } else if (error.message.indexOf('0x137')) {
                     message = `SOLD OUT!`;
+                    console.log(error.message)
                 } else if (error.message.indexOf('0x135')) {
                     message = `Insufficient funds to mint. Please fund your wallet.`;
                 }
@@ -154,11 +140,10 @@ const Home = (props: HomeProps) => {
                 }
             }
 
-            setAlertState({
-                open: true,
+            toast.error(
                 message,
-                severity: 'error',
-            });
+               
+            );
         } finally {
             setIsUserMinting(false);
         }
@@ -170,6 +155,7 @@ const Home = (props: HomeProps) => {
 
     return (
         <div className="bg-ded bg-[length:200px] min-h-screen">
+            <Toaster />
             <div className="grid min-h-screen grid-cols-1 bg-black/95 place-content-center">
                 <div className="relative p-4 bg-[#212529] shadow-xl border-neutral-600 mt-0 ring-1  max-w-sm mx-auto rounded-lg my-3">
                     <img src={LOGO_LINK} alt="" width="100%" style={{ borderRadius: '5px' }} />
@@ -224,19 +210,6 @@ const Home = (props: HomeProps) => {
                             </MintContainer>
                         </>
                     )}
-
-                    {/*         <Snackbar
-          open={alertState.open}
-          autoHideDuration={6000}
-          onClose={() => setAlertState({ ...alertState, open: false })}
-        >
-          <Alert
-            onClose={() => setAlertState({ ...alertState, open: false })}
-            severity={alertState.severity}
-          >
-            {alertState.message}
-          </Alert>
-        </Snackbar> */}
                 </div>
             </div>
         </div>

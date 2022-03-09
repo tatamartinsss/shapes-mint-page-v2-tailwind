@@ -1,6 +1,6 @@
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
-import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
 import {
     LedgerWalletAdapter,
     PhantomWalletAdapter,
@@ -12,7 +12,7 @@ import {
 } from '@solana/wallet-adapter-wallets';
 import { clusterApiUrl } from '@solana/web3.js';
 import * as anchor from '@project-serum/anchor';
-import React, { FC, ReactNode, useMemo } from 'react';
+import { FC, ReactNode, useMemo } from 'react';
 import Home from './Home';
 
 require('./App.css');

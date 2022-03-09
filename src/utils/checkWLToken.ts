@@ -6,22 +6,12 @@ import {
     MemcmpFilter,
     DataSizeFilter,
   } from "@solana/web3.js";
-  // @ts-ignore
-  import fetch from "node-fetch";
-  import { AnchorWallet } from "@solana/wallet-adapter-react";
   
-  var tempData: any;
-  
-  /* const METADATA_PUBKEY = new PublicKey(
-    'metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s',
-  ) */
   const TOKEN_PUBKEY = new PublicKey(
     "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
   );
   
-  //export async function getNft()
-  
-  export const checkWLToken = async (
+   export const checkWLToken = async (
     connection: Connection,
     userAddress: any,
     wltTokenAddress: any

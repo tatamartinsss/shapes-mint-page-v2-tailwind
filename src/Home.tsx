@@ -157,7 +157,7 @@ const Home = (props: HomeProps) => {
         <div className="bg-ded bg-[length:200px] min-h-screen">
             <Toaster />
             <div className="grid min-h-screen grid-cols-1 bg-black/95 place-content-center">
-                <div className="relative p-4 bg-[#212529] shadow-xl border-neutral-600 mt-0 ring-1  max-w-sm mx-auto rounded-lg my-3">
+                <div className="relative p-4 bg-[#212529] shadow-xl border-neutral-600 mt-3 ring-1  max-w-sm mx-auto rounded-lg my-3">
                     <img src={LOGO_LINK} alt="" width="100%" style={{ borderRadius: '5px' }} />
                 </div>
                 <div className="relative p-2 bg-[#212529] shadow-xl border-neutral-600 aspect-square ring-1  max-w-sm mx-auto my-3 rounded-lg ">

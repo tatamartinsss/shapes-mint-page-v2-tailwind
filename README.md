@@ -1,6 +1,6 @@
 # Candy Machine V2 - TAILWIND - Template
 
-by [Halaprix](https://twitter.com/halaprix).<br/>Live preview [here](https://vol2.shapes.ltd/)<br/>
+by [Halaprix](https://twitter.com/halaprix).<br/>Live preview [here](https://shapes-mint-page-v2-tailwind.vercel.app/)<br/>
 1click deploy:<br/><br/>
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhalaprix%2Fshapes-mint-page-v2-tailwind&env=REACT_APP_CANDY_MACHINE_ID,REACT_APP_SOLANA_NETWORK,REACT_APP_SOLANA_RPC_HOST&envDescription=REACT_APP_CANDY_MACHINE_ID%20is%20the%20ID%20of%20your%20Candy%20Machine.%20REACT_APP_SOLANA_NETWORK%20is%20the%20network%20you%20deployed%20your%20CM%20%60devnet%60%20or%20%60mainnet-beta%60%20%20REACT_APP_SOLANA_RPC_HOST%20is%20the%20URL%20of%20the%20RPC%20you%20want%20to%20use%20eg%20%60https%3A%2F%2Fssc-dao.genesysgo.net%2F%20%60&project-name=candy-machine-v2-mint-web&repo-name=candy-machine-v2-mint-web&demo-title=Shapes%20V2&demo-description=Shapes%20VOL2%20mint%20website%20created%20using%20this%20repo.&demo-url=https%3A%2F%2Fvol2.shapes.ltd%2F)
 

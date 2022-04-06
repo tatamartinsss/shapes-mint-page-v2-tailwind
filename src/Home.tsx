@@ -1,5 +1,9 @@
 import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import * as anchor from '@project-serum/anchor';
+import { RiTwitterFill } from 'react-icons/ri';
+import { FaDiscord } from 'react-icons/fa';
+import { RiInstagramLine } from 'react-icons/ri';
+import { AiOutlineMedium } from 'react-icons/ai';
 
 import styled from 'styled-components';
 
@@ -11,7 +15,7 @@ import {
     CandyMachineAccount,
     CANDY_MACHINE_PROGRAM,
     getCandyMachineState,
-    mintOneToken
+    mintOneToken,
 } from './utils/candy-machine';
 import { checkWLToken } from './utils/checkWLToken';
 import { Header } from './components/Header';
@@ -22,8 +26,8 @@ import { usePoller } from './hooks/usePoller';
 
 import toast, { Toaster } from 'react-hot-toast';
 
-const IMAGE_LINK = '/Skelly.jpg';
-const LOGO_LINK = '/DOTD-logo-1.png';
+const IMAGE_LINK = '/logoempty2.png';
+// const LOGO_LINK = '/logowhite.png';
 
 const ConnectButton = styled(WalletMultiButton)`
     width: 100%;
@@ -114,10 +118,9 @@ const Home = (props: HomeProps) => {
                 }
 
                 if (status && !status.err) {
-                    toast.success( 'Congratulations! Mint succeeded!');
+                    toast.success('Congratulations! Mint succeeded!');
                 } else {
-                    toast.error(
-                       'Mint failed! Please try again!');
+                    toast.error('Mint failed! Please try again!');
                 }
             }
         } catch (error: any) {
@@ -127,7 +130,7 @@ const Home = (props: HomeProps) => {
                     message = 'Transaction Timeout! Please try again.';
                 } else if (error.message.indexOf('0x137')) {
                     message = `SOLD OUT!`;
-                    console.log(error.message)
+                    console.log(error.message);
                 } else if (error.message.indexOf('0x135')) {
                     message = `Insufficient funds to mint. Please fund your wallet.`;
                 }
@@ -140,10 +143,7 @@ const Home = (props: HomeProps) => {
                 }
             }
 
-            toast.error(
-                message,
-               
-            );
+            toast.error(message);
         } finally {
             setIsUserMinting(false);
         }
@@ -154,17 +154,62 @@ const Home = (props: HomeProps) => {
     }, [anchorWallet, props.candyMachineId, props.connection, refreshCandyMachineState]);
 
     return (
-        <div className="bg-ded bg-[length:200px] min-h-screen">
+        <div className="bg-ded w-full bg-no-repeat bg-cover min-h-screen">
             <Toaster />
-            <div className="grid min-h-screen grid-cols-1 bg-black/95 place-content-center">
-                <div className="relative p-4 bg-[#212529] shadow-xl border-neutral-600 mt-3 ring-1  max-w-sm mx-auto rounded-lg my-3">
-                    <img src={LOGO_LINK} alt="" width="100%" style={{ borderRadius: '5px' }} />
+            <div className="flex-col sm:flex-row sm:h-20 text-white bg-[#09142F] justify-center pt-6 sm:pt-0 flex sm:justify-between items-center sticky top-0 z-10">
+                <a href="https://www.zoosolana.com/" className="self-center">
+                    <div className="text-lg hover:text-[#2FCD8A] font-bold text-left pl-5 tracking-widest flex">
+                        <span>SOLANA ZOO</span>
+                    </div>
+                </a>
+                <div className="flex flex-col sm:flex-row items-center">
+                    <div className="flex mr-3 divide-x p-3 divide-opacity-20 divide-gray-100">
+                        <a
+                            href="https://twitter.com/SolanaZoo_NFT"
+                            className="text-xl tracking-widest font-semibold px-5 py-2 hover:text-[#2FCD8A] self-center"
+                        >
+                            <RiTwitterFill size="1.5em" />
+                        </a>
+                        <a
+                            href="https://discord.com/invite/gBphrYNF8B"
+                            className="text-xl tracking-widest font-semibold px-5 py-2 hover:text-[#2FCD8A] self-center "
+                        >
+                            <FaDiscord size="1.5em" />
+                        </a>
+                        <a
+                            href="https://www.instagram.com/solanazoo/"
+                            className="text-xl tracking-widest font-semibold px-5 py-2 hover:text-[#2FCD8A] self-center "
+                        >
+                            <RiInstagramLine size="1.5em" />
+                        </a>
+                        <a
+                            href="https://solanazoo.medium.com/"
+                            className="text-xl tracking-widest font-semibold px-5 py-2 hover:text-[#2FCD8A] self-center "
+                        >
+                            <AiOutlineMedium size="1.5em" />
+                        </a>
+                    </div>
+                    <div className="pb-3 sm:pb-0 flex px-5">
+                        <WalletMultiButton>
+                            {wallet?.publicKey
+                                ? `${wallet.publicKey.toString().slice(0, 4)}...${wallet.publicKey
+                                      .toString()
+                                      .slice(-4)}`
+                                : 'Connect'}
+                        </WalletMultiButton>
+                    </div>
                 </div>
+            </div>
+
+            <div className="grid grid-cols-1 place-content-top">
+                {/* <div className="relative p-4 bg-[#138404] shadow-xl border-neutral-600 mt-3 ring-1  max-w-sm mx-auto rounded-lg my-3">
+                    <img src={LOGO_LINK} alt="" width="100%" style={{ borderRadius: '5px' }} />
+                </div> */}
                 <div className="relative p-2 bg-[#212529] shadow-xl border-neutral-600 aspect-square ring-1  max-w-sm mx-auto my-3 rounded-lg ">
                     <img src={IMAGE_LINK} alt="" width="100%" style={{ borderRadius: '5px' }} />
                 </div>
 
-                <div className="mx-auto w-full p-2  bg-[#212529] shadow-xl border-neutral-600 ring-1  max-w-sm  my-3 rounded-lg ">
+                <div className="mx-auto w-full py-2 px-4  bg-[#212529] shadow-xl border-neutral-600 ring-1  max-w-sm  my-3 rounded-lg ">
                     {!wallet.connected ? (
                         <ConnectButton>Connect Wallet</ConnectButton>
                     ) : loading ? (

@@ -166,6 +166,7 @@ const Home = (props: HomeProps) => {
                     <div className="flex mr-3 divide-x p-3 divide-opacity-20 divide-gray-100">
                         <a
                             target="_blank"
+                            rel="noreferrer"
                             href="https://twitter.com/SolanaZoo_NFT"
                             className="text-xl tracking-widest font-semibold px-5 py-2 hover:text-[#2FCD8A] self-center"
                         >
@@ -173,6 +174,7 @@ const Home = (props: HomeProps) => {
                         </a>
                         <a
                             target="_blank"
+                            rel="noreferrer"
                             href="https://discord.com/invite/gBphrYNF8B"
                             className="text-xl tracking-widest font-semibold px-5 py-2 hover:text-[#2FCD8A] self-center "
                         >
@@ -180,6 +182,7 @@ const Home = (props: HomeProps) => {
                         </a>
                         <a
                             target="_blank"
+                            rel="noreferrer"
                             href="https://www.instagram.com/solanazoo/"
                             className="text-xl tracking-widest font-semibold px-5 py-2 hover:text-[#2FCD8A] self-center "
                         >
@@ -187,6 +190,7 @@ const Home = (props: HomeProps) => {
                         </a>
                         <a
                             target="_blank"
+                            rel="noreferrer"
                             href="https://solanazoo.medium.com/"
                             className="text-xl tracking-widest font-semibold px-5 py-2 hover:text-[#2FCD8A] self-center "
                         >
